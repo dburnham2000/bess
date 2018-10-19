@@ -55,12 +55,7 @@ CXXVERSION := $(shell $(CXX) -dumpversion)
 
 ifeq "$(CXXCOMPILER)" "g++"
   ifneq "$(shell printf '$(CXXVERSION)\n7' | sort -V | head -n1)" "7"
-  # check for installed g++-7 on Ubuntu 16.04LTS
-    ifeq "$(shell printf '$(shell $(CXX)-7 -dumpversion)\n7' | sort -V | head -n1)" "7"
-      CXX := g++-7
-    else
-      $(error g++ 7 or higher is required. Use container_build.py if newer g++ is not available.)
-    endif
+    $(error g++ 7 or higher is required. Use container_build.py if newer g++ is not available.)
   endif
 endif
 
